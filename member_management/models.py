@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm
+from django.forms import ModelForm, RadioSelect
 
 
 class Member(models.Model):
@@ -18,5 +18,9 @@ class MemberForm(ModelForm):
     # TODO clean phone_number
 
     class Meta:
+        ROLE_CHOICES = [('False', False), ('True', True)]
         model = Member
         fields = ['first_name', 'surname', 'email', 'phone_number', 'role']
+        widgets = {
+            'role': RadioSelect(choices=ROLE_CHOICES),
+        }

@@ -1,12 +1,29 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <a href="/add">Add User</a>
-{% if members %}
-    {% for member in members %}
-        <a href="/edit/{{ member.id }}">{{ member }}</a>
-    {% endfor %}
-{% else %}
-    <p>No members found.</p>
-{% endif %}
+    <div class="card-block">
+        <h1>
+            <span>Team members</span>
+            <a href="/add"><i class="las la-plus"></i></a>
+        </h1>
+        <p>You have {{ members.count }} team members.</p>
+        <hr>
+        {% if members %}
+            {% for member in members %}
+                <a href="/edit/{{ member.id }}" class="member-card">
+                    <strong class="member-name">{{ member.first_name }} {{ member.surname }}
+                    {% if member.role %}
+                        (admin)
+                    {% endif %}
+                    </strong>
+                    <span class="member-phone">{{ member.phone_number }}</span>
+                    <span class="member-email">{{ member.email }}</span>
+                    <span class="hidden-mobile"><i class="las la-edit"></i></span>
+                </a>
+                <hr>
+            {% endfor %}
+        {% else %}
+            <p>No members found.</p>
+        {% endif %}
+    </div>
 {% endblock content %}

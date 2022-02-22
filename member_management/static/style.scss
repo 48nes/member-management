@@ -1,0 +1,152 @@
+$body-bg: #f3f3f3;
+$body-font: #4e4d4d;
+$body-second-font: #999e9e;
+$body-fg: #ffffff;
+$navbar: #d1d4d9;
+$accent-one: #4e7cf6;
+
+body {
+  padding: 0;
+  margin: 0;
+  background: $body-bg;
+  color: $body-font;
+  font-family: 'Lato', sans-serif;
+}
+
+a {
+  color: $accent-one;
+
+  &:hover {
+    color: darken($accent-one, 10%);
+  }
+}
+
+.navbar {
+  padding: .75rem .5rem;
+  background: $navbar;
+  display: flex;
+  justify-content: space-between;
+
+  a {
+    text-decoration: none;
+  }
+
+  .navbar-left {
+    font-weight: bold;
+    font-size: 1.3rem;
+
+    a {
+      color: $body-font;
+    }
+  }
+
+  .navbar-right {
+    display: flex;
+    align-items: center;
+  }
+}
+
+#main-content {
+  padding: 1rem;
+
+  .card-block {
+    padding: 1rem;
+    background: $body-fg;
+
+    h1 {
+      margin: 0;
+
+      &+p {
+        color: $body-second-font;
+      }
+    }
+
+    h3 {
+      margin: 0 0 .25rem 0;
+    }
+
+    hr {
+      border-top: 1px solid rgba($body-second-font, 0.4);
+    }
+
+    .member-card {
+      display: flex;
+      padding: .5rem;
+      text-decoration: none;
+
+      @media screen and (max-width: 772px) {
+        flex-direction: column;
+      }
+
+      .member-name {
+        color: $body-font;
+
+        @media screen and (min-width: 772px) {
+          flex: 0 0 32%;
+          max-width: 32%;
+        }
+
+        @media screen and (max-width: 772px) {
+          margin-bottom: .25rem;
+        }
+      }
+
+      .member-phone, .member-email {
+        color: $body-second-font;
+
+        @media screen and (min-width: 772px) {
+          flex: 0 0 32%;
+          max-width: 32%;
+        }
+
+        @media screen and (max-width: 772px) {
+          margin-bottom: .25rem;
+        }
+      }
+
+      .hidden-mobile {
+        text-align: right;
+
+        @media screen and (min-width: 772px) {
+          flex: 0 0 4%;
+          max-width: 4%;
+        }
+
+        @media screen and (max-width: 772px) {
+          display: none;
+        }
+      }
+    }
+
+    form {
+      input {
+        border-radius: 5px;
+        border: 1px solid rgba($body-second-font, 0.4);
+        padding: .25rem;
+        font-size: 1rem;
+        line-height: 1.5;
+
+        &:focus-visible {
+          border: 1px solid $accent-one;
+          box-shadow: 0 0 0 2px rgba($accent-one, 0.4);
+          outline: none;
+        }
+      }
+
+      button {
+        background: $accent-one;
+        border: 1px solid $accent-one;
+        color: $body-bg;
+        border-radius: 3px;
+        padding: .5rem 1rem;
+        margin-top: .5rem;
+
+        &:hover {
+          background: darken($accent-one, 10%);
+          border: 1px solid darken($accent-one, 10%);
+          transition: .3s ease;
+        }
+      }
+    }
+  }
+}

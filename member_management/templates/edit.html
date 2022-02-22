@@ -1,34 +1,41 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="card-block">
+        <h1>
+            <span>Edit team member</span>
+        </h1>
+        <p>Edit contact info, location, and role.</p>
+        <hr>
         {{ form.non_field_errors }}
-    <form action="/edit/{{ member.id }}" method="post">
-        {% csrf_token %}
-        <div class="fieldWrapper">
-            {{ form.first_name.errors }}
-            <label for="{{ form.first_name.id_for_label }}">First name:</label>
-            {{ form.first_name }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.surname.errors }}
-            <label for="{{ form.surname.id_for_label }}">Surname:</label>
-            {{ form.surname }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.email.errors }}
-            <label for="{{ form.email.id_for_label }}">Email:</label>
-            {{ form.email }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.phone_number.errors }}
-            <label for="{{ form.phone_number.id_for_label }}">Phone number:</label>
-            {{ form.phone_number }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.role.errors }}
-            <label for="{{ form.role.id_for_label }}">Role:</label>
-            {{ form.role }}
-        </div>
-        <input type="submit" value="Submit">
-    </form>
+        <form action="/edit/{{ member.id }}" method="post">
+            {% csrf_token %}
+            <div class="fieldWrapper">
+                {{ form.first_name.errors }}
+                <label for="{{ form.first_name.id_for_label }}">First name:</label>
+                {{ form.first_name }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.surname.errors }}
+                <label for="{{ form.surname.id_for_label }}">Surname:</label>
+                {{ form.surname }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.email.errors }}
+                <label for="{{ form.email.id_for_label }}">Email:</label>
+                {{ form.email }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.phone_number.errors }}
+                <label for="{{ form.phone_number.id_for_label }}">Phone number:</label>
+                {{ form.phone_number }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.role.errors }}
+                <label for="{{ form.role.id_for_label }}">Role:</label>
+                {{ form.role }}
+            </div>
+            <button type="submit" value="Submit">Save</button>
+        </form>
+    </div>
 {% endblock content %}

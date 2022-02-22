@@ -1,0 +1,98 @@
+body {
+  padding: 0;
+  margin: 0;
+  background: #f3f3f3;
+  color: #4e4d4d;
+  font-family: 'Lato', sans-serif; }
+
+a {
+  color: #4e7cf6; }
+  a:hover {
+    color: #1d58f4; }
+
+.navbar {
+  padding: .75rem .5rem;
+  background: #d1d4d9;
+  display: flex;
+  justify-content: space-between; }
+  .navbar a {
+    text-decoration: none; }
+  .navbar .navbar-left {
+    font-weight: bold;
+    font-size: 1.3rem; }
+    .navbar .navbar-left a {
+      color: #4e4d4d; }
+  .navbar .navbar-right {
+    display: flex;
+    align-items: center; }
+
+#main-content {
+  padding: 1rem; }
+  #main-content .card-block {
+    padding: 1rem;
+    background: #ffffff; }
+    #main-content .card-block h1 {
+      margin: 0; }
+      #main-content .card-block h1 + p {
+        color: #999e9e; }
+    #main-content .card-block h3 {
+      margin: 0 0 .25rem 0; }
+    #main-content .card-block hr {
+      border-top: 1px solid rgba(153, 158, 158, 0.4); }
+    #main-content .card-block .member-card {
+      display: flex;
+      padding: .5rem;
+      text-decoration: none; }
+      @media screen and (max-width: 772px) {
+        #main-content .card-block .member-card {
+          flex-direction: column; } }
+      #main-content .card-block .member-card .member-name {
+        color: #4e4d4d; }
+        @media screen and (min-width: 772px) {
+          #main-content .card-block .member-card .member-name {
+            flex: 0 0 32%;
+            max-width: 32%; } }
+        @media screen and (max-width: 772px) {
+          #main-content .card-block .member-card .member-name {
+            margin-bottom: .25rem; } }
+      #main-content .card-block .member-card .member-phone, #main-content .card-block .member-card .member-email {
+        color: #999e9e; }
+        @media screen and (min-width: 772px) {
+          #main-content .card-block .member-card .member-phone, #main-content .card-block .member-card .member-email {
+            flex: 0 0 32%;
+            max-width: 32%; } }
+        @media screen and (max-width: 772px) {
+          #main-content .card-block .member-card .member-phone, #main-content .card-block .member-card .member-email {
+            margin-bottom: .25rem; } }
+      #main-content .card-block .member-card .hidden-mobile {
+        text-align: right; }
+        @media screen and (min-width: 772px) {
+          #main-content .card-block .member-card .hidden-mobile {
+            flex: 0 0 4%;
+            max-width: 4%; } }
+        @media screen and (max-width: 772px) {
+          #main-content .card-block .member-card .hidden-mobile {
+            display: none; } }
+    #main-content .card-block form input {
+      border-radius: 5px;
+      border: 1px solid rgba(153, 158, 158, 0.4);
+      padding: .25rem;
+      font-size: 1rem;
+      line-height: 1.5; }
+      #main-content .card-block form input:focus-visible {
+        border: 1px solid #4e7cf6;
+        box-shadow: 0 0 0 2px rgba(78, 124, 246, 0.4);
+        outline: none; }
+    #main-content .card-block form button {
+      background: #4e7cf6;
+      border: 1px solid #4e7cf6;
+      color: #f3f3f3;
+      border-radius: 3px;
+      padding: .5rem 1rem;
+      margin-top: .5rem; }
+      #main-content .card-block form button:hover {
+        background: #1d58f4;
+        border: 1px solid #1d58f4;
+        transition: .3s ease; }
+
+/*# sourceMappingURL=style.css.map */
