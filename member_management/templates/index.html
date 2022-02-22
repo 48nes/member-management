@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <a href="/add">Add User</a>
+{% if members %}
+    {% for member in members %}
+        <a href="/edit/{{ member.id }}">{{ member }}</a>
+    {% endfor %}
+{% else %}
+    <p>No members found.</p>
+{% endif %}
+{% endblock content %}
