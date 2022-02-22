@@ -1,5 +1,5 @@
 from django.db import models
-from django.forms import ModelForm, RadioSelect
+from django.forms import ModelForm, RadioSelect, TextInput, EmailInput
 
 
 class Member(models.Model):
@@ -18,9 +18,13 @@ class MemberForm(ModelForm):
     # TODO clean phone_number
 
     class Meta:
-        ROLE_CHOICES = [('False', False), ('True', True)]
+        ROLE_CHOICES = [('False', 'Regular - Can\'t delete members'), ('True', 'Admin - Can delete members')]
         model = Member
         fields = ['first_name', 'surname', 'email', 'phone_number', 'role']
         widgets = {
+            'first_name': TextInput(attrs={'placeholder': 'First Name'}),
+            'surname': TextInput(attrs={'placeholder': 'Surname'}),
+            'email': EmailInput(attrs={'placeholder': 'name@example.com'}),
+            'phone_number': TextInput(attrs={'placeholder': '1234567890'}),
             'role': RadioSelect(choices=ROLE_CHOICES),
         }

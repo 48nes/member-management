@@ -1,6 +1,20 @@
 {% extends 'base.html' %}
 
 {% block content %}
+    <div class="hide" id="confirm-modal">
+        <div class="modal-block">
+            <a onclick="closeModal()"><i class="las la-times"></i></a>
+            <h3>Are you sure you want to remove this member?</h3>
+            <p>If you delete this member you cannot recover them.</p>
+            <div class="btnWrapper">
+                <form action="/edit/{{ member.id }}" method="post">
+                {% csrf_token %}
+                    <button class="btn-cancel" onclick="closeModal()">Cancel</button>
+                    <button class="btn-delete" name="delete" value="delete" type="submit">Delete</button>
+                </form>
+            </div>
+        </div>
+    </div>
     <div class="card-block">
         <h1>
             <span>Edit team member</span>
@@ -10,6 +24,7 @@
         {{ form.non_field_errors }}
         <form action="/edit/{{ member.id }}" method="post">
             {% csrf_token %}
+            <h3>Info</h3>
             <div class="fieldWrapper">
                 {{ form.first_name.errors }}
                 <label for="{{ form.first_name.id_for_label }}">First name:</label>
@@ -30,12 +45,27 @@
                 <label for="{{ form.phone_number.id_for_label }}">Phone number:</label>
                 {{ form.phone_number }}
             </div>
-            <div class="fieldWrapper">
+            <h3>Role</h3>
+            <div class="roleWrapper">
                 {{ form.role.errors }}
-                <label for="{{ form.role.id_for_label }}">Role:</label>
                 {{ form.role }}
             </div>
-            <button type="submit" value="Submit">Save</button>
+            <div class="btnWrapper">
+                <button class="btn-delete" type="button" onclick="confirmDelete()">Delete</button>
+                <button class="btn-submit" name="edit" type="submit" value="Submit">Save</button>
+            </div>
         </form>
     </div>
+
+    <script>
+    function confirmDelete() {
+        const modal = document.getElementById('confirm-modal');
+        modal.classList.remove("hide");
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('confirm-modal');
+        modal.classList.add("hide");
+    }
+    </script>
 {% endblock content %}

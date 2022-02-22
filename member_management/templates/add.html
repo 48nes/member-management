@@ -32,13 +32,15 @@
                 {{ form.phone_number }}
             </div>
             <h3>Role</h3>
-            <div class="fieldWrapper">
-
+            <div class="roleWrapper">
                 {{ form.role.errors }}
-                <label for="{{ form.role.id_for_label }}">Role:</label>
                 {{ form.role }}
             </div>
-            <button type="submit" value="Submit">Save</button>
+            <div class="btnWrapper">
+                <!-- ignore -->
+                <span></span>
+                <button class="btn-submit" type="submit" value="Submit">Save</button>
+            </div>
         </form>
     </div>
 {% endblock content %}

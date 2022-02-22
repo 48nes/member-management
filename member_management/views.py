@@ -44,6 +44,11 @@ def edit(request, member_id):
     except models.Member.DoesNotExist:
         return redirect('/not-found')
     if request.method == 'POST':
+        # check to see if deleting member
+        if 'delete' in request.POST:
+            member.delete()
+            return redirect('/')
+        # edit the member based on form data
         form = models.MemberForm(request.POST)
         if form.is_valid():
             first_name = form.cleaned_data.get('first_name')
