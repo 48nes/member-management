@@ -19,13 +19,8 @@ def add(request):
             email = form.cleaned_data.get('email')
             phone_number = form.cleaned_data.get('phone_number')
             role = form.cleaned_data.get('role')
-            new_member = models.Member()
-            # TODO cleanup
-            new_member.first_name = first_name
-            new_member.surname = surname
-            new_member.email = email
-            new_member.phone_number = phone_number
-            new_member.role = role
+            new_member = models.Member(first_name=first_name, surname=surname, email=email,
+                                       phone_number=phone_number, role=role)
             new_member.full_clean()
             new_member.save()
             return redirect('/')
@@ -56,7 +51,6 @@ def edit(request, member_id):
             email = form.cleaned_data.get('email')
             phone_number = form.cleaned_data.get('phone_number')
             role = form.cleaned_data.get('role')
-            # TODO cleanup
             member.first_name = first_name
             member.surname = surname
             member.email = email
@@ -74,4 +68,4 @@ def edit(request, member_id):
 
 
 def unknown_path(request, path):
-    return HttpResponse("404 error")
+    return HttpResponse("404 error page not found")

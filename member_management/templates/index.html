@@ -2,12 +2,15 @@
 
 {% block content %}
     <div class="card-block">
-        <h1>
-            <span>Team members</span>
-            <a href="/add"><i class="las la-plus"></i></a>
-        </h1>
-        <p>You have {{ members.count }} team members.</p>
-        <hr>
+        <div class="sticky-top">
+            <h1>
+                <span>Team members</span>
+                <a href="/add"><i class="las la-plus"></i></a>
+            </h1>
+            <p>You have {{ members.count }} team members.</p>
+            <hr>
+        </div>
+        <div class="member-box">
         {% if members %}
             {% for member in members %}
                 <a href="/edit/{{ member.id }}" class="member-card">
@@ -25,5 +28,6 @@
         {% else %}
             <p>No members found.</p>
         {% endif %}
+        </div>
     </div>
 {% endblock content %}

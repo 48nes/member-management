@@ -15,3 +15,4 @@ Tests were written using Django's test library. All tests can be run using `./ma
 - A login feature would be the next step
 - Implementing an authentication layer to disallow non-admins to edit member pages
 - Migration to either MySQL or PostgreSQL to support larger databases
+- Cleanup 404 error page
