@@ -29,12 +29,96 @@ class IndexViewTests(TestCase):
 
 
 class AddViewTests(TestCase):
-    def add_admin(self):
+    def test_add_admin(self):
         response = self.client.get('/add')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'Jane',
+            'surname': 'Doe',
+            'email': 'jdoe@gmail.com',
+            'phone_number': '1111111111',
+            'role': 'True'
+        }
+        response = self.client.post('/add', data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_add_regular(self):
+        response = self.client.get('/add')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'Jane',
+            'surname': 'Doe',
+            'email': 'jdoe@gmail.com',
+            'phone_number': '1111111111',
+            'role': 'False'
+        }
+        response = self.client.post('/add', data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_add_invalid(self):
+        response = self.client.get('/add')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'Jane',
+            'surname': 'Doe',
+            'email': 'not an email',
+            'phone_number': '1111111111',
+            'role': 'True'
+        }
+        response = self.client.post('/add', data)
         self.assertEqual(response.status_code, 200)
 
 
 class EditViewTests(TestCase):
-    def edit_nonexistent(self):
+    def test_edit_nonexistent(self):
+        response = self.client.get('/edit/1')
+        self.assertRedirects(response, '/not-found')
+
+    def test_edit_name(self):
+        models.Member.objects.create(first_name="John", surname="Doe", email="jdoe@gmail.com",
+                                     phone_number="1111111111", role=False)
+        response = self.client.get('/edit/1')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'Jane',
+            'surname': 'Doe',
+            'email': 'jdoe@gmail.com',
+            'phone_number': '1111111111',
+            'role': 'False'
+        }
+        response = self.client.post('/edit/1', data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_edit_email(self):
+        models.Member.objects.create(first_name="John", surname="Doe", email="jdoe@gmail.com",
+                                     phone_number="1111111111", role=False)
+        response = self.client.get('/edit/1')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'John',
+            'surname': 'Doe',
+            'email': 'johnd@gmail.com',
+            'phone_number': '1111111111',
+            'role': 'False'
+        }
+        response = self.client.post('/edit/1', data)
+        self.assertEqual(response.status_code, 302)
+
+    def test_edit_invalid(self):
         response = self.client.get('/edit')
         self.assertEqual(response.status_code, 200)
+
+    def test_edit_role(self):
+        models.Member.objects.create(first_name="John", surname="Doe", email="jdoe@gmail.com",
+                                     phone_number="1111111111", role=False)
+        response = self.client.get('/edit/1')
+        self.assertEqual(response.status_code, 200)
+        data = {
+            'first_name': 'John',
+            'surname': 'Doe',
+            'email': 'jdoe@gmail.com',
+            'phone_number': '1111111111',
+            'role': 'True'
+        }
+        response = self.client.post('/edit/1', data)
+        self.assertEqual(response.status_code, 302)
