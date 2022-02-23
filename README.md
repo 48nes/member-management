@@ -10,6 +10,8 @@
 
 Tests were written using Django's test library. All tests can be run using `./manage.py test`.
 
+I have also tested directly on the test server to ensure that the web app is functional, although I have wiped the databases.
+
 ### To-Do
 
 - Cleaning of phone numbers to validate number while still retaining support for international numbers
